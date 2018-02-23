@@ -3,6 +3,7 @@
 var dropMenu = document.getElementById('dropdown');
 var userForm = document.getElementById('user-form');
 var productForm = document.getElementById('product-container');
+var formSub = document.getElementById('submit');
 Product.all = [];
 
 //Need to check local storage if user exits/ has products in cart, etc.
@@ -16,11 +17,6 @@ function User(name, street, city, state, zip, phone) {
 
   //Array of products in the user cart
   this.cart = [];
-}
-
-//Creates user, 
-function setupUser() {
-
 }
 
 User.prototype.addProduct = function(product, quantity) {
@@ -74,18 +70,34 @@ function menuChange() {
 }
 dropMenu.addEventListener('change', menuChange);
 
+function submitHandler(e) {
+  e.preventDefault();
+  var name = e.target.name.value;
+  var street = e.target.name.value;
+  var city = e.target.name.value;
+  var state = e.target.name.value;
+  var zip = e.target.name.value;
+  var phone = e.target.name.value;
+
+  //If all of the fields are filled, create user
+  if(!name || !street || !city || !state || !zip || !phone) {
+    user = new User(name, street, city, state, zip, phone);
+    console.log('New user created :' + user.name.value);
+    userForm.style.visibility = 'hidden';
+  }
+}
+formSub.addEventListener('submit', submitHandler);
+
 var user;
 user = new User('Yannick', '3230 NE 100th St.', 'Seattle', 'Washington', 98125, 2069792191);
 
 //If user doesn't exist, add user to local storage
 if(!localStorage.getItem('user')) {
   user = JSON.parse(localStorage.getItem('user'));
-  productForm.appendChild(document.createElement('p').textContent = 'Welcome Back, ' + user.name);
 
 } else {
   //Call form function
   userForm.style.visibility = 'visible';
   localStorage.setItem('user', JSON.stringify(user));
-  
 }
 
