@@ -1,0 +1,38 @@
+* {
+  margin: 0 auto;
+  font-family: 'Alegreya SC';
+}
+
+#quantity {
+  width: 35px;
+}
+
+#user-form {
+  display: inline-block;
+  border: 3px black solid;
+  background: #ebebeb;
+  text-align: center;
+  float: right;
+  width: 200px;
+  /*Should be hidden*/
+  visibility: visible;
+}
+
+#product-container {
+  display: inline-block;
+  outline: 2px black ridge;
+  background: #e7e7e7cc;
+  text-align: center;
+  position: fixed;
+  width: 500;
+  height: 400;
+}
+
+#product-container img {
+  height: 200px;
+  float: left;
+}
+
+#container {
+  width: 850px;
+}
